@@ -1,0 +1,27 @@
+
+.avatar{
+    max-width: 100px;
+    max-height: 100px;
+    left : 40%;
+    top: -50px;
+    color: var(--mainColor);
+}
+
+.form:hover{
+    background-color: var(--mainColor);
+}
+
+.form input{
+max-width: 75%;
+width: 100%;
+margin: 0px auto;
+padding: 10px 30px;
+}
+
+.form button{
+    max-width: 75%;
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,90 @@
+.settings{
+max-width: 100px;
+width: 100%;
+}
+
+.settings .menu {
+    max-width: 500px;
+    left: -40%;
+    opacity: 0;
+    transition: 0.7s;
+    margin-top: 10px;
+  }
+
+
+.settings .bg:hover{
+    background-color: var(--mainColor);
+}
+
+.toggler i , .toggler{
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px!important;
+    border-top: 50%!important;
+}
+  
+  .toggler:focus + .menu  {
+    left: 10px !important;
+    opacity: 1;
+    transition: 0.3s;
+  }
+
+  .list-set{
+    cursor: pointer;
+  }
+
+  .list-set {
+    color: #111!important;
+    height: 0px;
+  }
+.delete{
+  cursor: pointer;
+}
+
+.list-set:hover i,.list-set:hover h5 , .delete:hover , .delete:hover i{
+    color: #fff!important;
+    background: var(--mainColor)!important;
+}
+
+
+.sure{
+  min-height: 100vh;
+  background-color: var(--hoverTextcolor);
+  top: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sure div div button:hover:first-child{
+background-color: rgb(209, 205, 205)!important;
+
+}
+.sure div div button{
+  border-radius: 0px!important;
+}
+.y:hover{
+  background-color: var(--mainColorL)!important;
+}
+
+.visiblePage{
+  z-index: 6;
+  position: relative;
+  display: flex;
+}
+.invisiblePage{
+  display: none;
+}
+
+.visiblePage div{
+  animation: anima 0.2s ease-in forwards;
+  
+  position: relative;
+  top: -10px;
+}
+@keyframes anima {
+  100%{
+    top: 0px;
+    
+  }
+}

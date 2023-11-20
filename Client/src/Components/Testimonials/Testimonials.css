@@ -1,0 +1,29 @@
+.peopleCard{
+    max-width: 23rem;
+    width: 100%;
+    word-break: break-all;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0!important;
+}
+.peopleCard img{
+    width: 70px;
+    max-width: 100%;
+}
+
+.slider{
+    margin: auto;
+}
+
+.slider div{
+    display: flex;
+    justify-content: center;
+}
+
+.slider:hover{
+    cursor: grab;
+}
+
+.slider:active{
+    cursor: grabbing;
+}

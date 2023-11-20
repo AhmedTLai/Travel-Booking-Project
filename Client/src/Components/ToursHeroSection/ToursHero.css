@@ -1,0 +1,10 @@
+.tourHero {
+    background: url('/images/tour.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

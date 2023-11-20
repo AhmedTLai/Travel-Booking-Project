@@ -1,0 +1,31 @@
+.footer_list li{
+    list-style: none;
+    cursor: pointer;
+    
+}
+
+footer h3{
+    text-wrap: nowrap;
+}
+
+.footer_list li:hover i{
+    color: var(--mainColorL);
+}
+
+.footer_list li i{
+    scale: 1.5;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a{
+    color: #000;
+    border-bottom: solid 3px var(--mainColorL);
+}
+
+footer a:hover{
+    color: var(--mainColor);
+}

@@ -1,0 +1,18 @@
+.pages{
+    position: absolute;
+    z-index: 2;
+    top: -50px;
+}
+
+
+.imgcont img{
+object-fit:fill;
+max-height: 270px;
+min-height: 270px;
+height: 100%;
+}
+
+.pages .active{
+   background: var(--mainColor);
+   color: #fff;
+}

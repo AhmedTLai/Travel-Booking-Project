@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+
+
+.img{
+    max-width: 300px;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border: solid 1px var(--mainColor);
+    transition: 0.3s;
+}
+
+.home-text{
+    color: var(--hoverTextcolor);
+}
+
+
+
+.imagesCont:hover .img {
+    scale: 1.05;
+}
+
+.homeSection{
+    display: flex;
+}
+@media screen and (max-width : 768px) {
+    .homeSection{
+        display: block;
+    }
+}

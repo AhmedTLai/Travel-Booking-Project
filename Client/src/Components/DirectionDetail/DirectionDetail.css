@@ -1,0 +1,51 @@
+.comment_form{
+    background: linear-gradient(16deg, var(--mainColor), gray,gray);
+}
+
+.comment_form div{
+    background-color: white;
+}
+
+.innerContainer{
+    flex: 2;
+}
+
+.comment_form button{
+    padding: 10px 35px;
+}
+
+
+.activeRate{
+    background : var(--mainColor);
+    color: white;
+    border-radius: 40%;
+    padding: 5px;
+}
+
+.activeRate i {
+    color: white;
+}
+
+.activeRate i:hover{
+    color: brown;
+}
+
+
+.textAreaC{
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    resize: none;
+}
+
+@media screen and (max-width : 576px) {
+    .innerContainer{
+        max-width: 100%!important;
+    }
+
+    .comment_form button{
+        padding: 10px 15px;
+    }
+}

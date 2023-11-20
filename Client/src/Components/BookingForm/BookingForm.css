@@ -1,0 +1,49 @@
+.BookingForm{
+    position: sticky;
+    top: 90px;
+    width: 100%;
+    height: 100%; 
+    transition: 0.3s;
+    opacity: 1;
+}
+
+
+.formbtn{
+    display: none;
+}
+
+
+.hidden{
+    opacity: 1!important;
+    
+    right: 0px!important;
+}
+
+@media screen and (max-width : 768px) {
+    .BookingForm{
+        position: fixed;
+        width: 75%!important;
+        right: -75%;
+        overflow: hidden;
+        top: 50px;
+        opacity: 0;
+        background-color: #fff;
+        z-index: 1;
+        max-height: 100%;
+        overflow-y: scroll;
+    }
+    .formbtn{
+        display : block;
+        position : fixed;
+        top : 40%;
+        z-index: 2;
+        right: 0px;
+        background-color: var(--mainColor);
+        color: #fff;
+        padding: 5px;
+        height: 200px;
+    }
+    .formbtn h1{
+        writing-mode:vertical-rl;
+    }
+}

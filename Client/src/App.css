@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+*{
+    font-family: 'Onest', sans-serif;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none!important;
+    box-sizing: border-box;
+    font-weight: 600!important;
+    letter-spacing: 1px;
+}
+*::selection{
+    background-color: var(--mainColorL);
+}
+
+.fontf{
+    font-family: 'Dancing Script', cursive;
+    padding: 7px 10px;
+}
+
+:root{
+    --mainColor : #faa244;
+    --hoverTextcolor : #00000086;
+    --mainColorL : #faa2449a;
+}
+
+.btn:focus{
+    box-shadow: 0px 0px 3px 5px var(--mainColorL);
+}
+
+.mainTextColor{
+    color: var(--mainColor);
+}
+
+.mainTextColor:hover{
+    color: var(--mainColorL);
+}
+
+.flex0{
+    flex: 0;
+}
+.flex1{
+    flex: 1;
+}
+.flex2{
+    flex: 2;
+}
+
+.bg{
+    background-color: var(--mainColor);
+}
+.bg:hover{
+    background-color : var(--mainColorL)
+}
+
+.objectFitC{
+    object-fit: cover;
+}
+
+.card .imgcont{
+    overflow: hidden;
+}
+
+.card .imgcont img{
+    transition: 0.3s;
+}
+
+.card:hover .imgcont img{
+    scale: 1.05;
+}
+
+.asideImages{
+    animation: asideImages 3s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes asideImages {
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+

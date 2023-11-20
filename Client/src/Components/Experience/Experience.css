@@ -1,0 +1,19 @@
+.spRadius{
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    min-height: 100px;
+    max-width: 100px;
+    width: 100%;
+}
+
+.aside{
+    position: relative;
+}
+
+@media screen and (max-width : 1200px) {
+    .aside{
+        position: absolute;
+        z-index: -1;
+        filter : blur(3px)
+    }  
+}

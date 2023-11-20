@@ -1,0 +1,13 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+
+.TankYouT{
+    /* font-family: 'Playball', cursive; */
+    font-family: 'Rock Salt', cursive;
+    letter-spacing: 2px;
+}
+
+.check{
+    font-weight : 400!important ;
+}

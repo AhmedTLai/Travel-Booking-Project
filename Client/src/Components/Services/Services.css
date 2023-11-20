@@ -1,0 +1,41 @@
+.cardbox{
+    box-shadow: 5px 5px 7px 0px var(--mainColorL);
+    min-width: 16rem;
+    transition: 0.3s;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.cardbox  i{
+    transition: 0.3s;
+}
+
+.Servicon{
+    transition: 0.3s;
+    margin: 10px 20px;
+}
+
+.services{
+    display: flex;
+}
+
+
+.cardbox:hover i{
+    color: var(--mainColor) !important;
+}
+
+.cardbox:hover .Servicon{
+    background-color: #fff;
+}
+
+.cardbox:hover{
+    background-color: var(--mainColor);
+    color: #fff!important;
+}
+
+
+@media screen and (max-width : 768px){
+    .services{
+        display: block;
+    }
+}

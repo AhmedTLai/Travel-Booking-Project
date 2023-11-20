@@ -1,0 +1,8 @@
+.AddTourForm .btn{
+    text-align: start !important;
+    cursor: text;
+}
+
+.pointer-cursor{
+    cursor: pointer!important;
+}
