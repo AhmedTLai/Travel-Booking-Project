@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     
     // Define the destination folder where uploaded files will be stored
-    cb(null, '../client/public/upload' );
+    cb(null, 'https://github.com/AhmedTLai/Travel-Booking-Project/tree/master/Client/public/upload' );
   },
   filename: function (req, file, cb) {
     // Define the filename for the uploaded file
