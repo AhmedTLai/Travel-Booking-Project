@@ -2,4 +2,4 @@ services:
   - name: your-vite-app
     type: web
     buildCommand: npm run build
-    startCommand: npm run serve
+    startCommand: npm run dev
