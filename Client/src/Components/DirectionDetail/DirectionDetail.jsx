@@ -7,6 +7,9 @@ import { useContext, useEffect, useState } from "react"
 import api from "../../assets/data/api_Url_Config"
 import DirectionDetailSetings from "../DirectionDetailSeting/DirectionDetailSetings"
 import {AuthContext} from '../../Context/AuthContext'
+import { Cloudinary } from "@cloudinary/url-gen"
+import {AdvancedImage} from '@cloudinary/react';
+
 const DirectionDetail = () => {
 const [cards ,setCards] = useState([])
 const {currentUser} = useContext(AuthContext)
@@ -25,11 +28,21 @@ const {currentUser} = useContext(AuthContext)
     const data = cards.find(val=> val.tour_id == id)
  
 
+    const cld = new Cloudinary({
+      cloud: {
+        cloudName: 'dwkxpjgor'
+      }
+    }); 
+    const pic = data?.photo+'.jpg'
+    const myImage = cld.image(pic,{ responsive_breakpoints: { 
+      transformation: { crop: 'cover', aspect_ratio: '16:9', gravity: 'auto' } 
+    }}).setVersion('1701267061');
+
   return (
     <div className="container py-5 d-flex gap-3">
         <div className="innerContainer">
         <div className="w-100 me-auto mb-4 ">
-        <img src={'/upload/'+data?.photo} alt="pic" className="rounded-3 w-100 objectFitC" />
+        <AdvancedImage cldImg={myImage} alt="pic" className="rounded-3 w-100 objectFitC" />
         </div>
 
         <div className="border rounded-3 py-4 px-4">

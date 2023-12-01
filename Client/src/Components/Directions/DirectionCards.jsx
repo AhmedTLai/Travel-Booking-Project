@@ -1,5 +1,8 @@
 // import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import {Cloudinary} from "@cloudinary/url-gen";
+import {AdvancedImage} from '@cloudinary/react';
+
 
 const DirectionCards = (info) => {
 
@@ -9,13 +12,24 @@ const DirectionCards = (info) => {
       e.preventDefault();
       navigate(`/tours/book/${val?.tour_id}`,{state : val})
     }
+    const cld = new Cloudinary({
+      cloud: {
+        cloudName: 'dwkxpjgor'
+      }
+    }); 
 
+    
+
+    const pic = val?.photo+'.jpg'
+    const myImage = cld.image(pic,{ responsive_breakpoints: { 
+      transformation: { crop: 'cover', aspect_ratio: '16:9', gravity: 'auto' } 
+    }}).setVersion('1701267061');
   return (
     <>
 
     <div className="card" style={{minWidth : '26.3rem',maxWidth : '26.3rem'}}>
       <div className='imgcont w-100 overflow-hidden border' style={{maxHeight : '250px'}}>
-        <img src={'/upload/'+val.photo} alt="pic" className="card-img-top"/>
+      <AdvancedImage cldImg={myImage}/>
         </div>
         <div className="card-body">
             <div className="d-flex justify-content-between align-items-center px-3 py-1">

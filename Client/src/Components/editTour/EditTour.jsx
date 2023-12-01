@@ -2,6 +2,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './EditTour.css'
 import { useEffect, useState } from 'react'
 import api from '../../assets/data/api_Url_Config'
+import { Cloudinary } from '@cloudinary/url-gen'
+import {AdvancedImage} from '@cloudinary/react';
 
 const EditTour = () => {
     const [FromImg,setFormImg] = useState()
@@ -36,9 +38,7 @@ const EditTour = () => {
         }
         // setInpPhoto(file.name)
     }
-    
-    
-    
+   
     
     
     const inputHundler = (e)=>{
@@ -52,7 +52,7 @@ const EditTour = () => {
         e.preventDefault();
     
         const formData = new FormData();
-        formData.append('image', FromImg);
+        formData.append('file', FromImg);
         formData.append('inp',JSON.stringify(input))
         // console.log(formData)
         // await api.post('/tour/uploadImg', formData);
@@ -64,6 +64,15 @@ const EditTour = () => {
         console.error("Form submission error:", error);
       }
     };
+    const cld = new Cloudinary({
+      cloud: {
+        cloudName: 'dwkxpjgor'
+      }
+    }); 
+    const pic = data?.photo+'.jpg'
+    const myImage = cld.image(pic,{ responsive_breakpoints: { 
+      transformation: { crop: 'cover', aspect_ratio: '16:9', gravity: 'auto' } 
+    }}).setVersion('1701267061');
 
       return (
         <div className="container py-5 my-5">
@@ -104,7 +113,7 @@ const EditTour = () => {
  photo ? 
  <img src={photo} alt="UploadedImage"  className='w-100 h-100' style={{maxWidth : '300px',maxHeight : '300px' , objectFit : 'contain'}}/>
  :
- <img src={`/upload/${data?.photo}`} alt="UploadedImage"  className='w-100 h-100' style={{maxWidth : '300px',maxHeight : '300px' , objectFit : 'contain'}}/>
+ <AdvancedImage cldImg={myImage} alt="UploadedImage"  className='w-100 h-100' style={{maxWidth : '300px',maxHeight : '300px' , objectFit : 'contain'}}/>
 }            </div>
             </div>
             <br />

@@ -3,10 +3,22 @@ import './Navbar.css'
 import { NavLink , Link } from 'react-router-dom'
 import {AuthContext} from '../../Context/AuthContext';
 import api from '../../assets/data/api_Url_Config';
+import { AdvancedImage } from '@cloudinary/react';
+import {Cloudinary} from "@cloudinary/url-gen";
+
 const Navbar = () => {
   const [position, setPosition] = useState(false);
 
   const {currentUser} = useContext(AuthContext)
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dwkxpjgor'
+    }
+  }); 
+
+  const pic = currentUser?.profile_pic+'.jpg'
+  const myImage = cld.image(pic).setVersion('1701267061');
 
   const NavbarScrollHandler = () => {
     if (window.scrollY > 50) {
@@ -84,16 +96,25 @@ const Navbar = () => {
         
       </div>
       :
-      <div className='d-flex mx-auto justify-content-center  py-1 px-1'>
+      <div className='d-flex ms-auto justify-content-center align-items-center  py-1 px-1'>
         <div className="dropdown open  ">
         <button className="btn bg text-white dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
               {currentUser.fullname}
             </button>
+            
+           
         <div className="dropdown-menu" aria-labelledby="triggerId">
           <button className="dropdown-item" href="#" onClick={Logout}><i className='fa-solid fa-circle-xmark mainTextColor'></i> Logout</button>
           <Link to='/edit-profile' className="dropdown-item"><i className='fa-solid fa-gear mainTextColor'></i> Profile Settings</Link >
         </div>
+      </div>
+      <div className=''>
+      {currentUser?.profile_pic == '/images/avatar.jpg' ?
+            <img src={'/images/avatar.jpg'} alt="profilePic" className='rounded-circle w-100 h-100 border ms-3' style={{maxHeight : '70px',maxWidth : '70px'}} />
+      :
+      <AdvancedImage  cldImg={myImage} className=' w-100 h-100 border ms-3' style={{maxHeight : '70px',maxWidth : '70px'}}/>
+          }
       </div>
       </div>
       }

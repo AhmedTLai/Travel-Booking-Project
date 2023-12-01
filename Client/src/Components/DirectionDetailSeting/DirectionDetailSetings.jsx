@@ -41,6 +41,8 @@ const DirectionDetailSetings = () => {
            navigate('/tours')
         }
     }
+
+   
     
 
   return (

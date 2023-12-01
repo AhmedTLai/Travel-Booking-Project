@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './Components/Footer/Footer'
-import Navbar from './Components/Navbar/Navbar'
+import Navbar from './Components/Navbar/Navbar.jsx'
 import HomePage from './Pages/HomePage'
 import Tours from './Pages/Tours'
 import BookPage from './Pages/BookPage'
@@ -12,6 +12,7 @@ import Register from './Pages/login/Register'
 import AddTour from './Pages/AddTour'
 import EditTour from './Components/editTour/EditTour'
 import EditProfile from './Components/EditProfile/EditProfile'
+import NavT from './NavT'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <Navbar />
+      {/* <NavT /> */}
       <Routes>
         <Route path='/' element={<HomePage />}/>
         <Route path='/tours' element={<Tours />}/>

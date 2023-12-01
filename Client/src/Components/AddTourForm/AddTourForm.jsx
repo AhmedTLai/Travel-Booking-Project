@@ -16,6 +16,11 @@ const navigate = useNavigate()
 // const [inpPhoto , setInpPhoto] = useState()
 const FileHundler = (e)=>{
     const file = e.target.files[0]; // Get the first selected file
+    // const reader = new FileReader()
+    //  reader.readAsDataURL(file)
+    //  reader.onloadend = ()=>{
+    //   setFormImg(reader.result)
+    //  }
     setFormImg(file)
     if (file) {
       var imageUrl = URL.createObjectURL(file); // Create a URL for the file
@@ -38,12 +43,17 @@ const FormHundler = async (e)=>{
     // await api.post('/add-tour',{photo : inpPhoto})
    
     const formData = new FormData();
-    formData.append('image', FromImg);
+    formData.append('file', FromImg);
+  formData.append('data',JSON.stringify(input))
+  // await api.post('/tour/uploadImg',formData)
 
-  await api.post('/tour/uploadImg',formData)
-
-    await api.post('/tour/add-tour',input)
-        .then(res => navigate('/tours'))
+    await api.post('/tour/add-tour',formData,
+    {
+      headers: {
+      'Content-Type': 'multipart/form-data', // Set the content type for FormData
+    }
+  })
+        .then(() => navigate('/tours'))
         .catch(err => console.log(err))
 
     

@@ -1,7 +1,9 @@
-const { addTour, editTour, deleteTour, GetTours, UploadC } = require('../Controllers/TourC');
-const router = require('express').Router();
+const express = require('express')
+const { editProfile } = require('../Controllers/EditProfileC')
+const router = express.Router()
+
 const multer = require('multer');
-const { verifyAdmin } = require('../util/verifyToken');
+const { verifyUser } = require('../util/verifyToken');
 const { v2 } = require('cloudinary');
 const cloudinary = v2;
 
@@ -12,7 +14,7 @@ const storage = multer.diskStorage({
 }); // Use memory storage for handling the file in memory
 const upload = multer({ storage: storage });
 
-const multerU = upload.single('file'); // Use upload middleware to handle the file upload
+const multerU = upload.single('profileImg'); // Use upload middleware to handle the file upload
 
 cloudinary.config({ 
   cloud_name: 'dwkxpjgor', 
@@ -24,7 +26,7 @@ const uploadPic = async (req, res, next) => {
   try {
     if (!req.file) {
       return next()
-    }
+    } 
 
     // Use the Cloudinary uploader with the file buffer
     const result = await cloudinary.uploader.upload(req.file.path, {
@@ -47,10 +49,7 @@ const uploadPic = async (req, res, next) => {
 }
 
 
-// Routes
-router.post('/add-tour', verifyAdmin, multerU,uploadPic ,addTour);
-router.put('/edit-tour/:id', verifyAdmin , multerU , uploadPic, editTour);
-router.delete('/delete-tour/:id', verifyAdmin, deleteTour);
-router.get('/get-tour', GetTours);
 
-module.exports = router;
+router.put('/editProfile/:id',verifyUser,multerU,uploadPic,editProfile)
+
+module.exports = router

@@ -1,10 +1,25 @@
 const db = require('../db')
-const fs = require('fs')
-const path = require('path');
-
+// const fs = require('fs')
+// const path = require('path');
+const { v2 } = require('cloudinary');
+const cloudinary = v2;
 var file;
 
+cloudinary.config({ 
+  cloud_name: 'dwkxpjgor', 
+  api_key: '344187378176722', 
+  api_secret: "lJVlLSbMqsrMq81BPmjSlXiTWRA" 
+});
 
+async function getImageVersion(publicId) {
+  try {
+    const result = await cloudinary.api.resource(publicId);
+    return result.version;
+  } catch (error) {
+    console.error('Error fetching image version:', error.message);
+    return null;
+  }
+}
 
   
   const UploadC = (req, res) => {
@@ -25,20 +40,13 @@ const AddTourQ = "INSERT INTO `tours` (`title`, `city`, `distance`, `price`, `ma
 
 
 
-const title = req.body.title
-const city = req.body.city
-const distance = req.body.distance
-const price = req.body.price
-const maxGroupSize = req.body.maxGroupSize
-const desc = req.body.desc
-const photo = file.filename 
 
-// const featured = req.body.featured
-
+const {title,city,distance,price,maxGroupSize,desc} = JSON.parse(req.body.data)
+const photo = req.file.filename
 
 const data = [
     title,
-    city,
+    city, 
     distance,
     price,
     maxGroupSize,
@@ -73,18 +81,23 @@ const editTour = (req, res) => {
   db.query(getTour, [id], (err, data) => {
     if (err) {
       return res.status(500).json(err);
-    }
-
+    } 
+ 
     if (data.length > 0) {
-      // const basePath = path.join(__dirname, '..', '..','..','client','public', 'upload');
-      const basePath = `../client/public/upload`
 
+
+      // const basePath = path.join(__dirname, '..', '..','..','client','public', 'upload');
+      // const basePath = `../client/public/upload`
       // Assuming 'data[0].photo' contains the file name (e.g., 'example.jpg')
+
+
       const fileName = data[0].photo;
       
-      const filePath = path.join(basePath, fileName);
+      // const filePath = path.join(basePath, fileName);
+
+
       // Check if either the file or updatedDataString is defined
-      if (file?.filename !== data[0].photo || updatedDataString !== undefined) {
+      if (file?.filename !== fileName || updatedDataString !== undefined) {
         // Initialize updatedData as an empty object
         let updatedData = {};
 
@@ -122,15 +135,21 @@ const editTour = (req, res) => {
             console.error(err);
             res.status(500).json(err);
           } else {
-            fs.unlink(filePath, (err) => {
-              if (err) {
-                console.error('Error deleting file:', err);
-                res.status(500).json(err);
-              } else {
-                console.log('File deleted successfully');
-                res.json({ message: 'Tour updated successfully.' });
+            // fs.unlink(filePath, (err) => {
+            //   if (err) {
+            //     console.error('Error deleting file:', err);
+            //     res.status(500).json(err);
+            //   } else {
+            //     console.log('File deleted successfully');
+            //     res.json({ message: 'Tour updated successfully.' });
+            //   }
+            // });
+            cloudinary.uploader.destroy(fileName,(err)=>{
+              if(err){
+                console.log(err)
               }
-            });
+            })
+            res.status(200).json('success')
           }
         });
       } else {
@@ -154,16 +173,20 @@ const deleteTour = (req,res)=>{
                 if(err){
                   return res.status(500).json(err)
               }
+              const filename = result[0].photo
+                // const filePath = `https://res.cloudinary.com/dwkxpjgor/image/upload/v1701122528/${result[0].photo}`
 
-                const filePath = `C:\\Users\\Ahmed\\Desktop\\projects\\Fullstuck BookingTravel project\\Client\\public\\upload\\${result[0].photo}`
+              // fs.unlink(filePath, (err) => {
+              //   if (err) {
+              //     console.error('Error deleting file:', err);
+              //   } else {
+              //     console.log('File deleted successfully.');
+              //   }
+              // });
 
-              fs.unlink(filePath, (err) => {
-                if (err) {
-                  console.error('Error deleting file:', err);
-                } else {
-                  console.log('File deleted successfully.');
-                }
-              });
+              cloudinary.uploader.destroy(filename,(err)=>{
+                console.log(err)
+              })
 
               return res.status(200).json('success')
               })
@@ -182,8 +205,10 @@ const GetTours = (req, res) => {
           console.error('Error in GetTours:', err);
           return res.status(500).json({ error: 'Internal Server Error', details: err.message });
       } else {
+
+        // const version = getImageVersion(data.photo)
           return res.status(200).json(data);
-      }
+      } 
   });
 };
 

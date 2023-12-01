@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const AuthR = require('./routes/AuthR')
 const TourR = require('./routes/tourR') 
+const EditProfileR = require('./routes/EditProfileR')
 const { verifyAdmin, verifyUser, verifyToken } = require('./util/verifyToken')
 const app = express()
 
@@ -13,12 +14,13 @@ app.use((req,res,next)=>{
     console.log('working')
     next()
 })
-app.use(bodyParser.urlencoded({extended : true}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({limit : '50mb',extended : true}))
+app.use(bodyParser.json({limit : '50mb'}))
 app.use(cookieParser())
 app.use(cors({
     credentials: true,
-    origin: 'https://travel-booking-project-orpin.vercel.app',
+    // origin: 'https://travel-booking-project-orpin.vercel.app',
+    origin : 'http://localhost:5173',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }))
 // app.use(function (req, res, next) {
@@ -45,6 +47,7 @@ app.use(cors({
 
 app.use('/api/user',AuthR)
 app.use('/api/tour',TourR)
+app.use('/api/userconf',EditProfileR)
 
  
 

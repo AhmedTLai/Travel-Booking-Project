@@ -24,6 +24,14 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const EditUpdate = (data)=>{
+    try{
+      setCurrentUser(data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     if (currentUser) {
       localStorage.setItem('Auth_token', JSON.stringify(currentUser));
@@ -33,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [currentUser]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, err, Login }}>
+    <AuthContext.Provider value={{ currentUser, err, Login ,EditUpdate}}>
       {children}
     </AuthContext.Provider>
   );

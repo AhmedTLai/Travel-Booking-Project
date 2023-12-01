@@ -39,7 +39,7 @@ const Directions = (inf) => {
       <h2 className=''>Our featured tours</h2>
       <br />
       <br />
-      <div className='d-flex flex-wrap gap-3 justify-content-center position-relative'>
+      <div className='d-flex flex-wrap gap-3 position-relative'>
         {cards.length > 0 ? (
           data.map((val, ind) => <DirectionCards key={ind} val={val} />)
         ) : (
@@ -47,7 +47,7 @@ const Directions = (inf) => {
         )}
         <br />
         {page === 'tour' ? (
-          <div className='d-flex gap-2 align-items-center pages'>
+          <div className='d-flex gap-2 align-items-center justify-content-center w-100 pages'>
             {pages.map((v, i) => (
               <button
                 key={i}

@@ -14,8 +14,8 @@ const db = d.createPool({
     host: 'bbinbaphmj2m6s2sx3im-mysql.services.clever-cloud.com',
     database : 'bbinbaphmj2m6s2sx3im' ,
     password : '5sWiE7Y9m9eiomCaylLg',
+    port : 3306,
     connectionLimit : 100,
-    connectTimeout : 60000 * 60 * 24,
 })
   
  
