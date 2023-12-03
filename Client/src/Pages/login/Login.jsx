@@ -17,7 +17,7 @@ const Login = () => {
       setLoading(true)
       await Login(input);
       setLoading(false) 
-      navigate('/')
+      err && navigate('/')
   }catch(err){
     setLoading(false)
     console.log(err)
