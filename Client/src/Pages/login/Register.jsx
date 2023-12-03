@@ -6,18 +6,30 @@ import { useState } from 'react'
 
 const Register = () => {
 const navigate = useNavigate()
+const [Loading , setLoading] = useState(false)
 const [input , setInput] = useState()
 const [err , setErr] = useState()
 const inpHundler = (e)=>{
   setInput(prev => ({...prev , [e.target.name] : e.target.value}))
 }
 
-const RegisterHundler = (e)=>{
+const RegisterHundler = async (e)=>{
   e.preventDefault()
-
-  api.post('/user/register',input)
-  .then(res => setErr(res))
+  setLoading(true)
+try{
+  await api.post('/user/register',input)
+  .then((res) => 
+  {
+    setErr(res)
+    navigate('/')
+  })
   .catch(err => setErr(err.response.data))
+  setLoading(false)
+}catch(err){
+  setLoading(false)
+  console.log(err)
+}
+  
 }
 // navigate('/login')
 
@@ -51,7 +63,7 @@ const RegisterHundler = (e)=>{
     err?.data
   )}
 </p>
-        <button className='btn bg-dark text-light '>Register</button>
+<button className='btn text-light d-flex align-items-center' style={{background : '#77362f' , minHeight : '60px'}}>{Loading ? <img style={{maxHeight : '40px'}} className='h-100' src='/images/Loading.svg'/> : "Register"}</button>
         <br />
         <br />
         <p  className='text-white d-flex  gap-1 justify-content-center'>Already have account ? <Link className='text-dark' to='/login'>Login</Link></p>

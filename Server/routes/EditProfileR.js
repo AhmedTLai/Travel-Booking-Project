@@ -35,7 +35,7 @@ const uploadPic = async (req, res, next) => {
     });
 
     // console.log(req.file.path);
-    console.log(result)
+    
     // Handle addTour logic with the result from Cloudinary
     // For example:
     // await addTour({ image: result.url, ...otherTourData });

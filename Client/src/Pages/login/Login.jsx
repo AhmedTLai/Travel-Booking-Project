@@ -6,19 +6,22 @@ import { useContext, useState } from 'react'
 
 const Login = () => {
   const {Login , err } = useContext(AuthContext)
-
+  const [Loading , setLoading] = useState(false)
   const [input , setInput] = useState(null)
 
   const navigate = useNavigate()
 
-  const LoginHundler = (e)=>{
+  const LoginHundler = async (e)=>{
     e.preventDefault()
     try{
-    if(Login(input)){
+      setLoading(true)
+      const loginAPI = await Login(input);
+      setLoading(false)
+    if(loginAPI){
       navigate('/')
     }
-    // 
   }catch(err){
+    setLoading(false)
     console.log(err)
   }
 
@@ -48,12 +51,14 @@ const Login = () => {
         <br />
         <input onChange={inputHundler} type="password" name='password' placeholder='Enter you Password ...' className='form-control'/>
         <br />
-        <button className='btn bg-dark text-light '>Login</button>
+        <p className='py-3 w-100 text-danger text-center '>{err?.response.data ? err.response.data : ''}</p>
+
+        <button className='btn text-light  d-flex align-items-center' style={{background : '#77362f' , minHeight : '60px'}}>{Loading ? <img style={{maxHeight : '40px' }} className='h-100' src='/images/Loading.svg'/> : "Login"}</button>
         <br />
         <br />
         <p className='text-white d-flex  gap-1 justify-content-center'>You dont have account ? <Link className='text-dark' to='/register'>Register</Link></p>
         </form>
-
+         
         </div>
     </div>
   )

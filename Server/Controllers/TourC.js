@@ -11,27 +11,27 @@ cloudinary.config({
   api_secret: "lJVlLSbMqsrMq81BPmjSlXiTWRA" 
 });
 
-async function getImageVersion(publicId) {
-  try {
-    const result = await cloudinary.api.resource(publicId);
-    return result.version;
-  } catch (error) {
-    console.error('Error fetching image version:', error.message);
-    return null;
-  }
-}
+// async function getImageVersion(publicId) {
+//   try {
+//     const result = await cloudinary.api.resource(publicId);
+//     return result.version;
+//   } catch (error) {
+//     console.error('Error fetching image version:', error.message);
+//     return null;
+//   }
+// }
 
   
-  const UploadC = (req, res) => {
-    // Handle the uploaded file here
-    // const file = req.file;
-    file = req.file 
+  // const UploadC = (req, res) => {
+  //   // Handle the uploaded file here
+  //   // const file = req.file;
+  //   file = req.file 
    
-    if (!file) {
-      return res.status(400).send('No file uploaded.');
-    }
-    res.status(200).json('File uploaded successfully.');
-  };
+  //   if (!file) {
+  //     return res.status(400).send('No file uploaded.');
+  //   }
+  //   res.status(200).json('File uploaded successfully.');
+  // };
  
 
 
@@ -61,6 +61,25 @@ db.query(AddTourQ,[data],(err,result)=>{
     }
     return res.status(200).json('Success!')
 })
+
+}
+
+
+const AddReview = (req,res)=>{
+  
+  const {user_id,tour_id,desc,rate} = req.body
+  const data = 
+  [
+    user_id,
+    tour_id,
+    desc,
+    rate
+  ]
+  const addReviewQ = 'INSERT INTO reviews(user_id,tour_id,`desc`,`rate`) VALUES(?,?,?,?)'
+  db.query(addReviewQ,data,(err,result)=>{
+    if(err) return res.status(500).json(err)
+    res.status(200).json('success')  
+  })
 
 }
 
@@ -212,4 +231,32 @@ const GetTours = (req, res) => {
   });
 };
 
-module.exports = {addTour,editTour,deleteTour,GetTours,UploadC}
+const GetToursSearch = (req,res)=>{
+
+const {location,distance,maxgroupsize} = req.params
+const getToursQ = 'SELECT * FROM tours WHERE city=? AND distance<=? AND maxGroupSize<=?'
+const data = [
+  location,
+  distance,
+  maxgroupsize
+]
+db.query(getToursQ,data,(err,result)=>{
+  if (err) return res.status(500).json(err)
+  if(result.length > 0){
+    res.status(200).json(result)
+    // console.log(result)
+  }
+})
+}
+
+const GetReviews = (req,res)=>{
+const tour_id = req.params.tour_id
+const getReviewsQ = 'SELECT u.fullname, u.profile_pic, u.admin, r.* FROM reviews AS r JOIN users AS u ON r.user_id = u.user_id WHERE r.tour_id = ?'
+db.query(getReviewsQ,[tour_id],(err,data)=>{
+  if(err) return res.status(500).json(err)
+  
+  return res.status(200).json(data)
+})
+}
+
+module.exports = {addTour,editTour,deleteTour,GetTours,GetToursSearch,AddReview,GetReviews}

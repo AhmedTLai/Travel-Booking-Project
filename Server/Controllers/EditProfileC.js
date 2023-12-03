@@ -29,7 +29,7 @@ const editProfile = (req, res) => {
         if (err) return res.status(500).json(err);
 
         if (user.length > 0) {
-            const fileName = user.profile_pic;
+            const fileName = user[0].profile_pic;
 
             if (profilePicName !== fileName || data.length > 0) {
                 const setClauses = data.reduce((clauses, field) => {
@@ -45,7 +45,7 @@ const editProfile = (req, res) => {
                     setClauses.push('`profile_pic`=?');
                     data.push({ profile_pic: profilePicName });
                 }
-                console.log(setClauses)
+                
                 const values = data.reduce((values, field) => {
                     const value = Object.values(field)[0];
                     if (value !== null && value !== undefined) {
@@ -57,21 +57,21 @@ const editProfile = (req, res) => {
                 const updateQuery = `UPDATE users SET ${setClauses.join(', ')} WHERE user_id = ?`;
                 values.push(user_id);
 
-                db.query(updateQuery, values, (err, result) => {
+                db.query(updateQuery, values, async (err, result) => {
                     if (err) return res.status(500).json(err);
 
-                    if (fileName) {
-                        cloudinary.uploader.destroy(fileName, (err) => {
+                    
+                       await cloudinary.uploader.destroy(fileName, (err) => {
                             if (err) return console.log(err);
                         });
-                    }
+                    
                     const getUserQ= "SELECT * FROM users WHERE user_id=?"
                     db.query(getUserQ,user_id,(err,UpdatedUser)=>{
                         if(err) res.status(500).json(err)
                             const {password , ...other} = UpdatedUser
                             return res.status(200).json(other);
-                    })
-                });
+                    }) 
+                });   
             } else { 
                 return res.status(400).json({ error: 'No content provided. Please fill the inputs.' });
             }

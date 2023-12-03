@@ -53,14 +53,7 @@ app.use('/api/userconf',EditProfileR)
 
 
 app.get('/',(req,res)=>{
-    // db.connect((err)=>{
-    //     if(err){
-    //         console.log('notch hahahahahhahahahahahahahahahahahahaahahahahahahahahahahahahah')
-    //     }else{
-    //         console.log('yesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
-    //     }
-    // }
-    // )
+  
     res.json('its working fine !')
 })
 
@@ -81,8 +74,8 @@ const connection = () => {
             } else {
                 app.listen(4000, () => {
                     console.log('worked');
-                });
-            }
+                }); 
+            } 
         });
     };
 

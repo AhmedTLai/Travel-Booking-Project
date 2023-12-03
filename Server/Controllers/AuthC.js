@@ -45,7 +45,7 @@ const LoginC = (req, res) => {
             const uncryptedPW = bc.compareSync(password, result[0].password);
 
             if (uncryptedPW) {
-                const token = jw.sign({ id: result[0].id }, 'Auth_Token',{expiresIn : '1d'}); // Correct the signing
+                const token = jw.sign({ id: result[0].id }, 'Auth_Token'); // Correct the signing
 
                 const { password, ...other } = result[0]; // Removed .data
                 res.cookie('Auth_Token', token, {
@@ -69,4 +69,14 @@ res.status(200).json('loged out')
 }
 
 
-module.exports = {RegisterC,LoginC,LogOut}
+const DeleteAccount = (req,res)=>{
+    const user_id = req.params.user_id
+    const deleteAccountQ = 'DELETE FROM users WHERE user_id=?'
+
+    db.query(deleteAccountQ,[user_id],(err,result)=>{
+        if(err) return res.status(500).json(err)
+        return res.status(200).json('Success!')
+    })
+}
+
+module.exports = {RegisterC,LoginC,LogOut,DeleteAccount}

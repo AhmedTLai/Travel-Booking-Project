@@ -113,7 +113,7 @@ const Navbar = () => {
       {currentUser?.profile_pic == '/images/avatar.jpg' ?
             <img src={'/images/avatar.jpg'} alt="profilePic" className='rounded-circle w-100 h-100 border ms-3' style={{maxHeight : '70px',maxWidth : '70px'}} />
       :
-      <AdvancedImage  cldImg={myImage} className=' w-100 h-100 border ms-3' style={{maxHeight : '70px',maxWidth : '70px'}}/>
+<AdvancedImage cldImg={myImage} className='border my-4 rounded-circle overflow-hidden w-100 h-100 ms-3' style={{maxWidth : '50px', minWidth : '50px',minHeight : '50px' ,maxHeight : '50px' , objectFit : 'cover'}}/>
           }
       </div>
       </div>

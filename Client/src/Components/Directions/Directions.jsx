@@ -64,13 +64,13 @@ const Directions = (inf) => {
           ''
         )}
       </div>
-      {currentUser?.admin && (
+      {currentUser?.admin ? (
         <div className='position-relative py-3 w-100 d-flex justify-content-center'>
           <Link to='/add-tour' className='btn bg text-white'>
             Add tour
           </Link>
         </div>
-      )}
+      ):''}
     </section>
   );
 };

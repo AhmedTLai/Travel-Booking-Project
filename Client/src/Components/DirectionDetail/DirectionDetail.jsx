@@ -66,7 +66,7 @@ const {currentUser} = useContext(AuthContext)
         <Comments />
         </div>
         <BookingForm data={data}/>
-        {currentUser?.admin && <DirectionDetailSetings />}
+        {currentUser?.admin ? <DirectionDetailSetings /> : ''}
     </div>
   )
 }

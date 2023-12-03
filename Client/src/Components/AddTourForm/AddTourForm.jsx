@@ -11,6 +11,8 @@ const AddTourForm = () => {
 const [FromImg,setFormImg] = useState()
 const [photo ,setPhoto] = useState('')
 const [input , setInput] = useState()
+const [Loading , setLoading] = useState(false)
+
 const navigate = useNavigate()
 
 // const [inpPhoto , setInpPhoto] = useState()
@@ -46,17 +48,23 @@ const FormHundler = async (e)=>{
     formData.append('file', FromImg);
   formData.append('data',JSON.stringify(input))
   // await api.post('/tour/uploadImg',formData)
-
-    await api.post('/tour/add-tour',formData,
-    {
-      headers: {
-      'Content-Type': 'multipart/form-data', // Set the content type for FormData
-    }
-  })
-        .then(() => navigate('/tours'))
-        .catch(err => console.log(err))
-
+  try{
+    setLoading(true)
+    await api.post('/tour/add-tour',formData)
+    setLoading(false)
+    navigate('/tours')
+  }catch(err){
+    setLoading(false)
+    console.log(err)
+  }
     
+        // .then(() => )
+        // .catch(err => console.log(err))
+
+    // {
+    //   headers: {
+    //   'Content-Type': 'multipart/form-data', // Set the content type for FormData
+    // }}
     
     
 }
@@ -100,8 +108,8 @@ const FormHundler = async (e)=>{
         </div>
         <br />
         <br />
-        <button className="btn bg text-white w-100 py-3 fs-3 d-flex justify-content-center pointer-cursor">Publish tour</button>    
-        
+        <button className="btn bg text-white w-100 py-3 fs-3 d-flex justify-content-center pointer-cursor"> {Loading ? <img style={{maxHeight : '40px'}} className='h-100' src='/images/Loading.svg'/> : "Publish tour"}</button>    
+       
          </form>
 
     </div>

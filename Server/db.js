@@ -15,7 +15,8 @@ const db = d.createPool({
     database : 'bbinbaphmj2m6s2sx3im' ,
     password : '5sWiE7Y9m9eiomCaylLg',
     port : 3306,
-    connectionLimit : 100,
+    // waitForConnections: true,
+  connectionLimit: 10, // Set the maximum number of connections in the pool
 })
   
  

@@ -22,7 +22,7 @@
 .nvbOff{
     animation: animeOff 0.3s forwards ease-in-out ;
     position: relative;
-    z-index: 99;
+    z-index: 1;
 }
 
 .dropdown-item:hover,.dropdown-item:hover i{

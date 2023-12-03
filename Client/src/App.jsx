@@ -12,7 +12,9 @@ import Register from './Pages/login/Register'
 import AddTour from './Pages/AddTour'
 import EditTour from './Components/editTour/EditTour'
 import EditProfile from './Components/EditProfile/EditProfile'
-import NavT from './NavT'
+// import NavT from './NavT'
+import Gallery from './Components/Gallery/Gallery.jsx'
+import SearchResPage from './Pages/SearchResPage.jsx'
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
         <Route path='/add-tour' element={<AddTour />}/>
         <Route path='/tours/edit/:id' element={<EditTour />}/>
         <Route path='/edit-profile' element={<EditProfile />}/>
+        <Route path='/gallery' element={<Gallery />}/>
+        <Route path='/search-result/:location/:distance/:maxgroupsize' element={<SearchResPage />}/>
       </Routes>        
 
       <Footer />

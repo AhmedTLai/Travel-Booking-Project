@@ -1,7 +1,7 @@
-const { addTour, editTour, deleteTour, GetTours, UploadC } = require('../Controllers/TourC');
+const { addTour, editTour, deleteTour, GetTours, AddReview,GetToursSearch ,GetReviews} = require('../Controllers/TourC');
 const router = require('express').Router();
 const multer = require('multer');
-const { verifyAdmin } = require('../util/verifyToken');
+const { verifyAdmin, verifyUser } = require('../util/verifyToken');
 const { v2 } = require('cloudinary');
 const cloudinary = v2;
 
@@ -33,7 +33,7 @@ const uploadPic = async (req, res, next) => {
     });
 
     // console.log(req.file.path);
-    console.log(result)
+    //  ................................console.log(result)
     // Handle addTour logic with the result from Cloudinary
     // For example:
     // await addTour({ image: result.url, ...otherTourData });
@@ -49,8 +49,13 @@ const uploadPic = async (req, res, next) => {
 
 // Routes
 router.post('/add-tour', verifyAdmin, multerU,uploadPic ,addTour);
-router.put('/edit-tour/:id', verifyAdmin , multerU , uploadPic, editTour);
-router.delete('/delete-tour/:id', verifyAdmin, deleteTour);
-router.get('/get-tour', GetTours);
+router.post('/reviews',verifyUser,AddReview)
 
-module.exports = router;
+router.put('/edit-tour/:id', verifyAdmin , multerU , uploadPic, editTour);
+
+router.delete('/delete-tour/:id', verifyAdmin, deleteTour);
+
+router.get('/get-tour', GetTours);
+router.get('/tours-search/:location/:distance/:maxgroupsize',GetToursSearch)
+router.get('/getReviews/:tour_id',GetReviews)
+module.exports = router; 

@@ -8,6 +8,7 @@ const DirectionCards = (info) => {
 
     const {val} = info
     const navigate = useNavigate()
+    
     const HundleBookPage = (e)=>{
       e.preventDefault();
       navigate(`/tours/book/${val?.tour_id}`,{state : val})

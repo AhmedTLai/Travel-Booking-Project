@@ -40,6 +40,11 @@
     resize: none;
 }
 
+.adminDiv{
+    transform: rotate(270deg);
+    text-align: center;
+}
+
 @media screen and (max-width : 576px) {
     .innerContainer{
         max-width: 100%!important;
@@ -49,3 +54,4 @@
         padding: 10px 15px;
     }
 }
+
