@@ -15,9 +15,9 @@ const Login = () => {
     e.preventDefault()
     try{
       setLoading(true)
-      await Login(input);
+      await Login(input) && 
       setLoading(false) 
-      err && navigate('/')
+      navigate('/')
   }catch(err){
     setLoading(false)
     console.log(err)
