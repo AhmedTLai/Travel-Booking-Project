@@ -19,8 +19,8 @@ app.use(bodyParser.json({limit : '50mb'}))
 app.use(cookieParser())
 app.use(cors({
     credentials: true,
-    // origin: 'https://travel-booking-project-orpin.vercel.app',
-    origin : 'http://localhost:5173',
+    origin: 'https://travel-booking-project-orpin.vercel.app',
+    // origin : 'http://localhost:5173',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }))
 // app.use(function (req, res, next) {
