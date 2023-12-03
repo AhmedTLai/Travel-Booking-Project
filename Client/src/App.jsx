@@ -15,6 +15,7 @@ import EditProfile from './Components/EditProfile/EditProfile'
 // import NavT from './NavT'
 import Gallery from './Components/Gallery/Gallery.jsx'
 import SearchResPage from './Pages/SearchResPage.jsx'
+import PageNotFound from './Pages/PageNotFound.jsx'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/edit-profile' element={<EditProfile />}/>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path='/search-result/:location/:distance/:maxgroupsize' element={<SearchResPage />}/>
+        <Route path='/*' element={<PageNotFound />}/>
       </Routes>        
 
       <Footer />
