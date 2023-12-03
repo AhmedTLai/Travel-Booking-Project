@@ -21,7 +21,7 @@ try{
   .then((res) => 
   {
     setErr(res)
-    navigate('/')
+    navigate('/login')
   })
   .catch(err => setErr(err.response.data))
   setLoading(false)

@@ -15,11 +15,9 @@ const Login = () => {
     e.preventDefault()
     try{
       setLoading(true)
-      const loginAPI = await Login(input);
-      setLoading(false)
-    if(loginAPI){
+      await Login(input);
+      setLoading(false) 
       navigate('/')
-    }
   }catch(err){
     setLoading(false)
     console.log(err)
