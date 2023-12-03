@@ -22,15 +22,14 @@ const DirectionCards = (info) => {
     
 
     const pic = val?.photo+'.jpg'
-    const myImage = cld.image(pic,{ responsive_breakpoints: { 
-      transformation: { crop: 'cover', aspect_ratio: '16:9', gravity: 'auto' } 
-    }}).setVersion('1701267061');
+    const myImage = cld.image(pic).setVersion('1701267061');
+    console.log(myImage.publicID)
   return (
     <>
 
     <div className="card" style={{minWidth : '26.3rem',maxWidth : '26.3rem'}}>
       <div className='imgcont w-100 overflow-hidden border' style={{maxHeight : '250px'}}>
-      <AdvancedImage cldImg={myImage}/>
+      <AdvancedImage cldImg={myImage} alt='TourImg'/>
         </div>
         <div className="card-body">
             <div className="d-flex justify-content-between align-items-center px-3 py-1">

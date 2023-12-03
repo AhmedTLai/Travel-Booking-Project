@@ -23,7 +23,7 @@ const Experience = () => {
     <div className='d-flex flex-wrap justify-content-center position-relative'>
     <article className='flex1'>
     <h1 className='' style={{paddingTop : '30px',paddingBottom : '15px'}}>With Our all experience we will serve you</h1>
-    <h5 className='home-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae unde adipisci delectus cum.</h5>
+    <p className='home-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae unde adipisci delectus cum.</p>
     <div className='d-flex gap-5 justify-content-center my-5 flex-wrap'>
     {peopleExp.map((val,ind)=>(
       <ExpCards key={ind} val={val}/>

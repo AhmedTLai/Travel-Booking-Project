@@ -41,24 +41,32 @@ const Footer = () => {
         <div key={ind} className='flex1 border-end'>
           <h3>{val.title}</h3>
           <br />
+          
           {val.div.map((v,i)=>(
             <>
             {( val.title == 'Quick Links' || val.title == 'Discover' ) && v.name == 'Home' ? 
-            
+            <ul>
             <li key={i} className='mb-3'><Link to={'/'}>{v.name}</Link></li>
+            </ul>
             :
             ( val.title == 'Quick Links' || val.title == 'Discover' ) && v.name != 'Home' ?
+            <ul>
             <li key={i} className='mb-3'><Link to={'/'+v.name.toLowerCase()}>{v.name}</Link></li>
-            : <li key={i} className='mb-3'>{v.name}</li>}
-            
+            </ul>
+            : 
+            <ul>
+            <li key={i} className='mb-3'>{v.name}</li>
+            </ul>
+            }
             </>
           ))}
+         
         </div>
       ))}
       
     </div>
     <div className='d-flex justify-content-center py-3 border-top text-center' style={{background : '#dbeeff'}}>
-            <h5>© 2023 Tlaidjia-Ahmed. All rights reserved.</h5>
+            <p>© 2023 Tlaidjia-Ahmed. All rights reserved.</p>
       </div>
     </footer>
   )
