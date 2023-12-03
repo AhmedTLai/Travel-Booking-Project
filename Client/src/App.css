@@ -8,6 +8,7 @@
     box-sizing: border-box;
     font-weight: 600!important;
     letter-spacing: 1px;
+    font-display: swap;
 }
 *::selection{
     background-color: var(--mainColorL);
@@ -15,6 +16,7 @@
 
 .fontf{
     font-family: 'Dancing Script', cursive;
+    font-display: swap;
     padding: 7px 10px;
 }
 
@@ -85,12 +87,6 @@
         transform: translateY(0px);
     }
 }
-/*          */
 
-.drowdownListOn{
-    display: block;
-}
 
-.drowdownListOff{
-    display: none;
-}
+
