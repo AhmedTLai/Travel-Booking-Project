@@ -1,8 +1,5 @@
-import { Suspense } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import './Gallery.css';
+import './Gallery.css'
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 const gal = [
     {img : '/images/gallery-01.jpg',animationDuration : 2.7},
     {img : '/images/gallery-02.jpg',animationDuration : 4},
@@ -15,33 +12,24 @@ const gal = [
     {img : '/images/gallery-01.jpg',animationDuration : 1.7},
 ]
 
-const GalleryImage = ({ img, animationDuration }) => (
-    <LazyLoadImage
-      alt="Gallery"
-      src={img}
-      className="w-100 d-block galleryImg"
-      style={{ borderRadius: '20px', animationDuration: `${animationDuration}s` }}
-    />
-  );
-  
-  const Gallery = () => {
+const Gallery = () => {
+
     return (
-      <div className='container py-5'>
+    
+    <div className='container py-5'>
         <h4 className='py-2 px-1 bg d-inline-block fontf rounded-pill overflow-hidden'>Gallery</h4>
         <h1 className='py-3'>Visit our customers tour Gallery</h1>
         <div className='py-5'>
-          <ResponsiveMasonry className='' columnsCountBreakPoints={{ 450: 1, 768: 2, 992: 3 }}>
-            <Masonry gutter='1.3rem'>
-              {gal.map((val, ind) => (
-                <Suspense key={ind} fallback={<img style={{maxHeight : '100px'}} className='h-100' src='/images/Loading.svg'/>}>
-                  <GalleryImage img={val.img} animationDuration={val.animationDuration} />
-                </Suspense>
-              ))}
-            </Masonry>
-          </ResponsiveMasonry>
+        <ResponsiveMasonry className='' columnsCountBreakPoints={{450 : 1 ,768 : 2,992 : 3}} >
+        <Masonry gutter='1.3rem'>
+            {gal.map((val,ind)=>(
+                <img key={ind} src={val.img} className='w-100 d-block galleryImg' style={{borderRadius : '20px',animationDuration : val.animationDuration+'s'}} alt="Gallery" />
+        ))} 
+        </Masonry>
+        </ResponsiveMasonry>
         </div>
-      </div>
-    );
-  }
-  
-  export default Gallery;
+    </div>
+  )
+}
+
+export default Gallery
