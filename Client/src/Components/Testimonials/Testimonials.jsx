@@ -5,27 +5,27 @@ import { useState, useEffect } from 'react';
 const peopleSays = [
   {
     name: 'John Dea',
-    ProfileImg: '/images/ava-1.jpg',
+    ProfileImg: '/images/ava-1_batcheditor_fotor.webp',
   },
   {
     name: 'Lia Franklin',
-    ProfileImg: '/images/ava-2.jpg',
+    ProfileImg: '/images/ava-2_batcheditor_fotor.webp',
   },
   {
     name: 'Daniel Wilson',
-    ProfileImg: '/images/ava-3.jpg',
+    ProfileImg: '/images/ava-2_batcheditor_fotor.webp',
   },
   {
     name: 'John Dea',
-    ProfileImg: '/images/ava-1.jpg',
+    ProfileImg: '/images/ava-1_batcheditor_fotor.webp',
   },
   {
     name: 'Lia Franklin',
-    ProfileImg: '/images/ava-2.jpg',
+    ProfileImg: '/images/ava-2_batcheditor_fotor.webp',
   },
   {
     name: 'Daniel Wilson',
-    ProfileImg: '/images/ava-3.jpg',
+    ProfileImg: '/images/ava-3_batcheditor_fotor.webp',
   },
 ];
 

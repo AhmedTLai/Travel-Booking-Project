@@ -16,7 +16,7 @@ const NewsLetter = () => {
         <p className='home-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde deleniti numquam fuga. Ex suscipit temporiae at ducimus consequatur!</p>
         </article>
         <aside>
-            <img src="/images/male-tourist.png" alt="picNewsletter" className='asideImages w-100' />
+            <img src="/images/male-tourist_batcheditor_fotor.webp" alt="picNewsletter" className='asideImages w-100' />
         </aside>
         </container>
     </section>

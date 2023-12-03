@@ -55,7 +55,7 @@ const Navbar = () => {
     <nav className={position ?"navbar navbar-expand-lg navbar-light nvb" : 'navbar navbar-expand-lg navbar-light nvbOff'} >
   <div className="container">
     <Link className="navbar-brand" to="/">
-      <img src="/images/logo.png" alt="LOGO" className="w-100 h-100 logo" />
+      <img src="/images/logo_batcheditor_fotor.webp" alt="LOGO" className="w-100 h-100 logo" />
     </Link>
     <button
       className="navbar-toggler"

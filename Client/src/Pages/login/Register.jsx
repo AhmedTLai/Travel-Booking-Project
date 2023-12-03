@@ -37,7 +37,7 @@ try{
     <div className="container my-5  py-5">
         <div className="d-flex gap-3 my-5">
         <aside className="flex1">
-            <img src="/images/register.png" alt="RegisterPic" className="w-100"/>
+            <img src="/images/register_batcheditor_fotor.webp" alt="RegisterPic" className="w-100"/>
         </aside>
 
         <form className="py-3 bg position-relative text-white flex1 px-3 form" onSubmit={RegisterHundler}>

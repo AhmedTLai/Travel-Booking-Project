@@ -1,15 +1,15 @@
 import './Gallery.css'
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 const gal = [
-    {img : '/images/gallery-01.jpg',animationDuration : 2.7},
-    {img : '/images/gallery-02.jpg',animationDuration : 4},
-    {img : '/images/gallery-03.jpg',animationDuration : 2.5},
-    {img : '/images/gallery-04.jpg',animationDuration : 3.1},
-    {img : '/images/gallery-05.jpg',animationDuration : 4.2},
-    {img : '/images/gallery-06.jpg',animationDuration : 3},
-    {img : '/images/gallery-07.jpg',animationDuration : 2},
-    {img : '/images/gallery-03.jpg',animationDuration : 3.5},
-    {img : '/images/gallery-01.jpg',animationDuration : 1.7},
+    {img : '/images/gallery-01_batcheditor_fotor.webp',animationDuration : 2.7},
+    {img : '/images/gallery-03_batcheditor_fotor.webp',animationDuration : 4},
+    {img : '/images/gallery-04_batcheditor_fotor.webp',animationDuration : 2.5},
+    {img : '/images/gallery-02_batcheditor_fotor.webp',animationDuration : 3.1},
+    {img : '/images/gallery-05_batcheditor_fotor.webp',animationDuration : 4.2},
+    {img : '/images/gallery-06_batcheditor_fotor.webp',animationDuration : 3},
+    {img : '/images/gallery-07_batcheditor_fotor.webp',animationDuration : 2},
+    {img : '/images/gallery-03_batcheditor_fotor.webp',animationDuration : 3.5},
+    {img : '/images/gallery-01_batcheditor_fotor.webp',animationDuration : 1.7},
 ]
 
 const Gallery = () => {

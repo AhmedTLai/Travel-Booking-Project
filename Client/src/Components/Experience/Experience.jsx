@@ -32,7 +32,7 @@ const Experience = () => {
     </article>
     
     <aside className='flex1 d-flex aside'>
-    <img src="/images/experience.png" alt="experiencePic" className='asideImages w-100' style={{width : '600px',margin : 'auto'}}/>
+    <img src="/images/experience_batcheditor_fotor.webp" alt="experiencePic" className='asideImages w-100' style={{width : '600px',margin : 'auto'}}/>
     </aside>
     </div>
     </section>
