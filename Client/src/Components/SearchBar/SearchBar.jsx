@@ -47,7 +47,7 @@ const SearchBar = (info) => {
                     <input type={val.type} name={val.name} placeholder={val.placeHolder} className='form-control btn' onChange={HundleInp}/>
                 </div>
             ))}
-            <button className="btn bg"><i className="fa-solid fa-magnifying-glass text-white"></i></button>
+            <button className="btn bg" aria-label="Search"><i className="fa-solid fa-magnifying-glass text-white"></i></button>
         </form>
   )
 }
