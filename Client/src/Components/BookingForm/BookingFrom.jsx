@@ -84,7 +84,7 @@ const price = data?.price;
       </button>
       <form className={`flex1 BookingForm border py-5 px-4 ${!hide ? 'hidden' : ''}`} onSubmit={bookHundler}> 
         <div className='d-flex justify-content-between align-items-center'>
-          <h2>{data?.price}$<span className='fs-5'> /per person</span></h2>
+          <h2>{data?.price}DZD<span className='fs-5'> /per person</span></h2>
           <p>4.5 <i className='fa-solid fa-star mainTextColor'></i></p>
         </div>
         <br />

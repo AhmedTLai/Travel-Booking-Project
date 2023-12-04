@@ -53,9 +53,9 @@ const {currentUser} = useContext(AuthContext)
             </div>
             <div className="d-flex justify-content-between w-100 py-3 mb-3 gap-2 flex-wrap" style={{maxWidth : '100%'}}>
               <p className="w-100" style={{maxWidth : '200px'}} ><i className="fa-solid flex1 fa-location-dot"></i> {data?.city}</p>
-              <p className="w-100 d-flex align-items-center gap-1" style={{maxWidth : '200px', position : 'relative' , left : '-50px'}} ><i className="fa-solid flex1 fa-dollar-sign border border-dark rounded-circle w-100 text-center" style={{maxWidth : '17px'}}></i> {data?.price} DZD/per_person</p>
-              <p className="w-100 d-flex align-items-center gap-1" style={{maxWidth : '30px'}} ><i className="fa-solid flex1 fa-clock"></i> {data?.distance}</p>
-              <p className="w-100 d-flex align-items-center gap-1" style={{maxWidth : '30px'}} ><i className="fa-solid flex1 fa-user"></i> {data?.maxGroupSize}</p>
+              <p className="w-100 d-flex align-items-center gap-1" style={{maxWidth : '200px', position : 'relative' , left : '-50px'}} ><i className="fa-solid flex1 fa-dollar-sign border border-dark rounded-circle w-100 text-center" style={{maxWidth : '17px' ,maxHeight : '17px'}}></i> {data?.price} DZD/per_person</p>
+              <p className="w-100 d-flex align-items-center gap-1" style={{maxWidth : '30px'}} ><i className="fa-solid flex1 fa-clock"></i> {data?.distance}Km</p>
+              <p className="w-100 d-flex align-items-center gap-1" style={{maxWidth : '30px'}} ><i className="fa-solid flex1 fa-user"></i> {data?.maxGroupSize} persons</p>
             </div>
             <div>
               <h3 className="d-inline-flex mb-3">Description</h3>
