@@ -126,7 +126,7 @@ const Comments = () => {
         <h2>Reviews ({comments?.length} Reviews)</h2>
 
         <br />
-        <p className="w-100 text-danger">{err && err}</p>
+        <p className="w-100 text-danger">{err ? err : !currentUser && err ? 'you cant add a review , please login first .' : ''}</p>
         <br />
         <div className="d-flex justify-content-between flex-wrap " style={{maxWidth : '330px'}}>
             {starsReviews.map((val,ind)=>(
