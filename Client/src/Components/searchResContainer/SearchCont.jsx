@@ -3,7 +3,7 @@ import './SearchCont.css'
 import { useParams } from 'react-router-dom'
 import api from '../../assets/data/api_Url_Config'
 import DirectionCards from '../Directions/DirectionCards'
-import { justify } from '@cloudinary/url-gen/qualifiers/textAlignment'
+// import { justify } from '@cloudinary/url-gen/qualifiers/textAlignment'
 
 
 const SearchCont = () => {
