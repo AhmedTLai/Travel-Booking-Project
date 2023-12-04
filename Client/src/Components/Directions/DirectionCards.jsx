@@ -38,7 +38,7 @@ const DirectionCards = (info) => {
         </div>
         <h4>{val.city + ', ' +  val.title}</h4>
         <div className="py-3 px-3 d-flex justify-content-between align-items-center">
-        <h5>{val.price}$ /per person</h5>
+        <h5>{val.price}DZD /per person</h5>
         <button onClick={HundleBookPage} className='btn bg rounded-pill text-white'>Book Now</button>
         </div>
         </div>
