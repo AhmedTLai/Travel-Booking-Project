@@ -62,6 +62,9 @@ const Comments = () => {
     const submitCommentHundle = async (e)=>{
         e.preventDefault()
         // alert('Rate : '+tourRate + '\nComment : ' + commentInp)
+        if(currentUser){
+
+       
         try{
 
             if(commentInp && tourRate != 0){
@@ -82,6 +85,10 @@ const Comments = () => {
             console.log(err)
             setErr('something went wrong please try again later')
         }
+
+    }else{
+        setErr('you cant add a review , please login first .')
+    }
         
     }
 
@@ -126,7 +133,7 @@ const Comments = () => {
         <h2>Reviews ({comments?.length} Reviews)</h2>
 
         <br />
-        <p className="w-100 text-danger">{err ? err : !currentUser && err ? 'you cant add a review , please login first .' : ''}</p>
+        <p className="w-100 text-danger">{err && err}</p>
         <br />
         <div className="d-flex justify-content-between flex-wrap " style={{maxWidth : '330px'}}>
             {starsReviews.map((val,ind)=>(
