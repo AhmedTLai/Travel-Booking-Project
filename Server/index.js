@@ -43,7 +43,13 @@ app.use(cors({
 //  }); 
 // app.use(verifyAdmin)
 // app.use(verifyUser)
-// app.use(verifyToken)  
+// app.use(verifyToken) 
+
+app.use((req,res,next)=>{
+    setTimeout(()=>{
+        next()
+    },3000)
+})
 
 app.use('/api/user',AuthR)
 app.use('/api/tour',TourR)
