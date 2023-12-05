@@ -27,7 +27,7 @@ const DirectionCards = (info) => {
   return (
     <>
 
-    <div className="card" style={{minWidth : '26.3rem',maxWidth : '26.3rem'}}>
+    <div className="card" style={{maxWidth : '26.3rem'}}>
       <div className='imgcont w-100 overflow-hidden border' style={{maxHeight : '250px'}}>
       <AdvancedImage cldImg={myImage} alt='TourImg'/>
         </div>

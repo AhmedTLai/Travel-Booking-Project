@@ -28,4 +28,8 @@
     .homeSection{
         display: block;
     }
+
+    .homeSection aside{
+        bottom: -70px;
+    }
 }

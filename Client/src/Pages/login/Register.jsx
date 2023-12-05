@@ -35,14 +35,14 @@ try{
 
   return (
     <div className="container my-5  py-5">
-        <div className="d-flex gap-3 my-5">
+        <div className="formCont align-items-center gap-3 my-5">
         <aside className="flex1">
             <img src="/images/register_batcheditor_fotor.webp" alt="RegisterPic" className="w-100"/>
         </aside>
 
         <form className="py-3 bg position-relative text-white flex1 px-3 form" onSubmit={RegisterHundler}>
 
-        <div className="avatar w-100 h-100  rounded-circle overflow-hidden border py-3 px-3 position-absolute bg-white">
+        <div className="avatar  rounded-circle overflow-hidden border py-3 px-3 position-relative bg-white">
             <i className="fa-regular fa-user w-100 h-100 fs-1 d-flex align-items-center justify-content-center" ></i>
         </div>
 

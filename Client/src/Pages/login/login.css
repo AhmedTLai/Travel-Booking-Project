@@ -1,9 +1,17 @@
 
+.formCont{
+    display: flex!important;
+}
+
+.formCont aside{
+    display: block;
+}
+
 .avatar{
-    max-width: 100px;
-    max-height: 100px;
-    left : 40%;
-    top: -50px;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    top: -70px;
     color: var(--mainColor);
 }
 
@@ -24,4 +32,11 @@ padding: 10px 30px;
     margin: 0px auto;
     display: flex;
     justify-content: center;
+}
+
+
+@media screen and (max-width : 760px) {
+    .formCont aside{
+        display: none;
+    }
 }

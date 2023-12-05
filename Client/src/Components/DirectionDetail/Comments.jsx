@@ -168,7 +168,7 @@ const Comments = () => {
             {
             
             comments.map((val,ind)=>(
-                <div key={ind} className="d-flex align-items-center py-3 my-3 gap-3 border px-3">
+                <div key={ind} className="position-relative d-flex align-items-center py-3 my-3 gap-3 border px-3">
                   {val.admin ? <div className="adminDiv bg text-white py-1 px-1"><h5>ADMIN</h5></div> : ''}
                   { val?.profile_pic == '/images/avatar.jpg' ?            
 <img src={val?.profile_pic} alt="avatar" className='border my-4 rounded-circle overflow-hidden w-100 h-100 position-relative' style={{maxWidth : '70px', minWidth : '70px',minHeight : '70px' ,maxHeight : '70px' , objectFit : 'cover',top : '-30px'}}/>

@@ -1,0 +1,31 @@
+.FormSearch{
+    display: flex;
+}
+
+.shadowBox{
+    filter: blur(50px);
+}
+
+.FormSearch div button{
+    width: 100%;
+    max-width: 100px;
+    position: relative;
+}
+
+@media screen and (max-width : 450px) {
+    .FormSearch{
+        display: block;
+    }
+
+    .shadowBox{
+        filter: blur(150px);
+    }
+
+    .FormSearch div button{
+        width: 100%;
+        max-width: 100px;
+        position: relative;
+        bottom: -30px;
+    }
+    
+}
