@@ -12,15 +12,25 @@ const Directions = (inf) => {
   const [cards, setCards] = useState([]);
   const [data, setData] = useState([]); // Define the data state
   const pages = [];
+  const [loading , setLoading] = useState(false)
 
   const {currentUser} = useContext(AuthContext)
   useEffect(() => {
-    
-      api
-        .get('/tour/get-tour',{withCredentials : false})
+    const abort = new AbortController()
+    const getData = async ()=>{
+      setLoading(true)
+     await api
+        .get('/tour/get-tour',{withCredentials : false ,signal : abort.signal})
         .then((res) => setCards(res.data))
         .catch((err) => console.error(err));
-     
+        setLoading(false)
+    }
+      
+    getData()
+
+        return()=>{
+          abort.abort
+        }
   },[]);
 
   for (let i = 1; i <= Math.ceil(cards.length / postPerPage); i++) {
@@ -43,7 +53,7 @@ const Directions = (inf) => {
         {cards.length > 0 ? (
           data.map((val, ind) => <DirectionCards key={ind} val={val} />)
         ) : (
-          <h3>No data yet</h3>
+          <h3 className='text-center w-100'>{loading ? <img style={{maxHeight : '70px'}} className='h-100' src='/images/Loading.svg'/> : "No data yet"}</h3>
         )}
         <br />
         {page === 'tour' ? (

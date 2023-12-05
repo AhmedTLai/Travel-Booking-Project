@@ -8,6 +8,18 @@ const BookingForm = (info) => {
   const [hide, setHide] = useState(window.innerWidth <= 768);
   const [summary, setSummary] = useState(0);
   const [total, setTotal] = useState(0);
+  const [loading , setLoading] = useState(false)
+useEffect(()=>{
+const getData =async ()=>{
+  if(data){
+    setLoading(false)
+  }else{
+    setLoading(true)
+  }
+}
+
+getData()
+},[data])
   const navigate = useNavigate()
 
   const [inputs,setInputs] = useState([])
@@ -37,7 +49,7 @@ const price = data?.price;
 
     setSummary(summaryValue);
     setTotal(totalValue);
-  }, [persons,summary,total]);
+  }, [persons,summary,total,price ,data?.maxGroupSize]);
 
   useEffect(() => {
     // Handle window resize to show/hide the form
@@ -82,6 +94,8 @@ const price = data?.price;
       <button className='formbtn btn text-white' onClick={visibleFormBtn}>
         {hide ? <h1>Book Now</h1> : <h1>X</h1>}
       </button>
+      {data ?
+        <>
       <form className={`flex1 BookingForm border py-5 px-4 ${!hide ? 'hidden' : ''}`} onSubmit={bookHundler}> 
         <div className='d-flex justify-content-between align-items-center'>
           <h2>{data?.price}DZD<span className='fs-5'> /per person</span></h2>
@@ -103,7 +117,8 @@ const price = data?.price;
         <br />
         <div>
           <p className='d-flex justify-content-between w-100' style={{ wordBreak: 'break-word' }}>
-            <span>{data?.price}$ x {persons} person's</span>
+            
+            <span>{data?.price}$ x {persons} person{"'"}s</span>
             <span>{!summary ? 0 : summary} $</span>
           </p>
           <br />
@@ -115,6 +130,12 @@ const price = data?.price;
         <p className='w-100 text-center text-danger' style={{minHeight : '30px'}}>{err ? err : ''}</p>
         <button className='btn bg text-white rounded-pill w-100'>Book Now</button>
       </form>
+      </>
+      :
+      <div className={`d-flex justify-content-center align-items-center h-100 flex1 BookingForm border py-5 px-4 ${!hide ? 'hidden' : ''}`} style={{minHeight : '150px'}}>
+        <h3 className='text-center w-100'>{loading ? <img style={{maxHeight : '70px'}} className='h-100' src='/images/Loading.svg'/> : "No data yet"}</h3>
+       </div>
+      }
     </>
   );
 };

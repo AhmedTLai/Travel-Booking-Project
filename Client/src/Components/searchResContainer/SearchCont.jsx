@@ -13,13 +13,15 @@ const SearchCont = () => {
     
     useEffect(()=>{
         const abort = new AbortController()
+        
+        
+        const getData = async()=>{
+        
         try{
           setLoading(true)
-           api.get(`/tour/tours-search/${params.location}/${params.distance}/${params.maxgroupsize}`,{signal : abort.signal})
+            await api.get(`/tour/tours-search/${params.location}/${params.distance}/${params.maxgroupsize}`,{signal : abort.signal})
            .then(res =>
-            
             setCards(res.data)
-            
            )
            .catch(err => console.log(err))
                 
@@ -27,11 +29,16 @@ const SearchCont = () => {
         }catch(err){
             console.log(err)
         }
+      }
+      getData()
 
         return ()=>{
             abort.abort
         }
-    },[params])
+    
+      }
+    
+    ,[params])
 
     
 
@@ -41,7 +48,7 @@ const SearchCont = () => {
         {cards.length > 0 ? (
           cards.map((val, ind) => <DirectionCards key={ind} val={val} />)
         ) : (
-          <h3 className='text-center w-100'>{loading ? <img style={{maxHeight : '40px'}} className='h-100' src='/images/Loading.svg'/> : "No data yet"}</h3>
+          <h3 className='text-center w-100'>{loading ? <img style={{maxHeight : '70px'}} className='h-100' src='/images/Loading.svg'/> : "No data yet"}</h3>
         )}
         </div>
     </div>

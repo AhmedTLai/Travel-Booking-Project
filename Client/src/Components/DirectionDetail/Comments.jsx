@@ -52,6 +52,8 @@ const Comments = () => {
     const [tourRate,setTourRate] = useState(0)
     const params = useParams()
     const [loading , setLoading] = useState(false)
+    const [loading1 , setLoading1] = useState(false)
+
     const [err ,setErr] = useState('')
     const [comments,setComments] = useState([])
 
@@ -94,12 +96,20 @@ const Comments = () => {
 
     useEffect(()=>{
         const abort = new AbortController()
+        const getData =async ()=>{
         try{
-            api.get('/tour/getReviews/'+tour_id , {signal : abort.signal})
+            setLoading1(true)
+            await api.get('/tour/getReviews/'+tour_id , {signal : abort.signal})
             .then(res=>setComments(res.data))
+            setLoading1(false)
         }catch(err){
+            setLoading1(false)
             console.log(err)
+            
         }
+        
+        }
+       getData()
 
         return()=>{
             abort.abort
@@ -149,10 +159,15 @@ const Comments = () => {
             </div>
         </form>
 
-        
-        <div className="mt-4 w-100 px-1" style={comments.length > 3 ?{maxHeight : '500px' ,overflowY : "scroll"} : {maxHeight : '100%' ,overflow : "visible"}}>
+{            comments.length > 0 ? 
             
-            {comments.map((val,ind)=>(
+            <>
+     
+        <div className="mt-4 w-100 px-1" style={comments.length > 3 ?{maxHeight : '500px' ,overflowY : "scroll"} : {maxHeight : '100%' ,overflow : "visible"}}>
+             
+            {
+            
+            comments.map((val,ind)=>(
                 <div key={ind} className="d-flex align-items-center py-3 my-3 gap-3 border px-3">
                   {val.admin ? <div className="adminDiv bg text-white py-1 px-1"><h5>ADMIN</h5></div> : ''}
                   { val?.profile_pic == '/images/avatar.jpg' ?            
@@ -166,8 +181,15 @@ const Comments = () => {
                 <h5 className="ms-3">{val.desc}</h5>
                 </div>  
                 </div>
-            ))}
+            ))
+            }
         </div>
+        </>
+        :
+        <div className="d-flex justify-content-center align-items-center" style={{minHeight : '150px'}}>
+        <h3 className='text-center w-100'>{loading1 ? <img style={{maxHeight : '70px'}} className='h-100' src='/images/Loading.svg'/> : "No data yet"}</h3>
+       </div>
+        }   
 
     </div>
   )
