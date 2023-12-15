@@ -21,7 +21,7 @@ app.use(cors({
     credentials: true,
     origin: 'https://travel-booking-project-orpin.vercel.app',
     // origin : 'http://localhost:5173',
-    // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }))
 // app.use(function (req, res, next) {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -46,9 +46,10 @@ app.use(cors({
 // app.use(verifyToken) 
 
 app.use((req,res,next)=>{
+    console.log('http-Request')
     setTimeout(()=>{
         next()
-    },3000)
+    },2000)
 })
 
 app.use('/api/user',AuthR)
@@ -59,7 +60,6 @@ app.use('/api/userconf',EditProfileR)
 
 
 app.get('/',(req,res)=>{
-  
     res.json('its working fine !')
 })
 
